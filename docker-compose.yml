@@ -1,0 +1,48 @@
+version: "3.8"
+
+services:
+ 
+       nginx:
+         image: nginx:mainline-alpine
+         container_name: nginx
+         restart: unless-stopped
+         volumes:
+           - ./nginx.conf:/etc/nginx/nginx.conf:ro
+           - ./certs/:/etc/nginx/
+           
+         ports:
+           - "80:80"
+           - "443:443"
+
+
+       server1:
+         image: nginx:mainline-alpine
+         container_name: nginx2
+         restart: unless-stopped
+         volumes:
+           - ./html/server1.html:/usr/share/nginx/html/index.html
+  
+
+       server2:
+         image: nginx:mainline-alpine
+         container_name: nginx3
+         restart: unless-stopped
+         volumes:
+           - ./html/server2.html:/usr/share/nginx/html/index.html
+
+
+       server3:
+         image: nginx:mainline-alpine
+         container_name: nginx4
+         restart: unless-stopped
+         volumes:
+           - ./html/server3.html:/usr/share/nginx/html/index.html
+
+
+       server4:
+         image: nginx:mainline-alpine
+         container_name: nginx5
+         restart: unless-stopped
+         volumes:
+           - ./html/server4.html:/usr/share/nginx/html/index.html
+
